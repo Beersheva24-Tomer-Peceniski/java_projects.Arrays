@@ -34,4 +34,17 @@ public class ArraysTest {
         assertArrayEquals(expected4, insert(numbers, 15, 10000));
         assertArrayEquals(expected4, insert(numbers, -5, 10000));
     }
+
+    @Test 
+    void removeTest() {
+        int[] expected = {10, 7, 12, -4, 0, 3, 14};
+        assertArrayEquals(expected, remove(numbers, 4));
+        int[] expected2 = {0, 7, 12, -4, 13, 3, 14};
+        assertArrayEquals(expected2, remove(numbers, 0));
+        int[] expected3 = {10, 7, 12, -4, 13, 3, 0};
+        assertArrayEquals(expected3, remove(numbers, 6));
+        int[] expected4 = {0, 0, 0, 0, 0, 0, 0};
+        assertArrayEquals(expected4, remove(numbers, 15));
+        assertArrayEquals(expected4, remove(numbers, -5));
+    }
 }

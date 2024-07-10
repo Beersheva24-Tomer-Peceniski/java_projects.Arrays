@@ -32,4 +32,19 @@ public class Arrays {
         }
         return newArray;
     }
+
+    /* 
+    * @param numbers
+    * @param index
+    * @return new array with no removed from @param numbers number at @param index
+    */
+
+    public static int[] remove(int[] numbers, int index) {
+        int[] newArray = new int[numbers.length];
+        if (index >= 0 && index <= newArray.length) {
+            System.arraycopy(numbers, 0, newArray, 0, index);
+            System.arraycopy(numbers, index + 1, newArray, index + 1, numbers.length - index - 1);    
+        }
+        return newArray;    
+    }
 }
