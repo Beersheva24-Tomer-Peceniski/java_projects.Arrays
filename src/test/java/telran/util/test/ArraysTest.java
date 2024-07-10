@@ -21,4 +21,17 @@ public class ArraysTest {
         int[] expected = {10, 7, 12, -4, 13, 3, 14, 100};
         assertArrayEquals(expected, add(numbers, newNumber));
     }
+
+    @Test 
+    void insertTest() {
+        int[] expected = {10, 7, 12, -4, 10000, 13, 3, 14};
+        assertArrayEquals(expected, insert(numbers, 4, 10000));
+        int[] expected2 = {10000, 10, 7, 12, -4, 13, 3, 14};
+        assertArrayEquals(expected2, insert(numbers, 0, 10000));
+        int[] expected3 = {10, 7, 12, -4, 13, 3, 14, 10000};
+        assertArrayEquals(expected3, insert(numbers, 7, 10000));
+        int[] expected4 = {0, 0, 0, 0, 0, 0, 0, 0};
+        assertArrayEquals(expected4, insert(numbers, 15, 10000));
+        assertArrayEquals(expected4, insert(numbers, -5, 10000));
+    }
 }
