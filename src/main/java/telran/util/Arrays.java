@@ -33,30 +33,3 @@ public class Arrays {
         return newArray;
     }
 }
-
-
-
-/*
-oldarray = {1, 2, 3, 4, 5, 6}
-new array = {0, 0, 0, 0, 0, 0, 0}
-new array = {0, 0, 0, 0, 8, 0, 0}
-new array = {1, 2, 3, 4, 8, 0, 0}
-new array = 
-*/
-
-
-
-
-
-
-/*
-{1, 2, 3, 4, 5, 6}
-
-add 8 at 4
-
-{1, 2, 3, 4, 8, 5, 6}
-
-ou seja, até a posição 3 ficou igual
-da posição 5 até o final ficou igual
-
-*/
