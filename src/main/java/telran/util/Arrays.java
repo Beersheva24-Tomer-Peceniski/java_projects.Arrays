@@ -91,12 +91,19 @@ public static int binarySearch(int [] ar, int key) {
 }    
 
 public static int[] insertSorted(int[] arSorted, int number) {
-    //TODO
-    //arSorted is sorted array
-    //to insert number at index to keep the array sorted
-    //additional sorting is disallowed
-    return null;
+    int [] newArSorted = java.util.Arrays.copyOf(arSorted, arSorted.length + 1);
+    int index = 0;
+    while (index < newArSorted.length - 1) {
+        if(number < newArSorted[index]) {
+            break;
+        }
+        index++;
+    }
+    newArSorted[index] = number;
+    System.arraycopy(arSorted, index, newArSorted, index + 1, arSorted.length - index);
+    return newArSorted;
 }
+
 public static boolean isOneSwap(int [] array) {
     //TODO
     //return true if a given array has exactly one swap to get sorted array

@@ -75,6 +75,22 @@ void sortTestRandomArray() {
         assertEquals(-1, binarySearch(arrayTest2, 100));
     }
 
+    @Test
+    void insertSortedTest() {
+        int[] ar = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        int number = 18;
+        int[] newAr = {2, 5, 8, 12, 16, 18, 23, 38, 56, 72, 91};
+        assertArrayEquals(newAr, insertSorted(ar,number));
+        int[] ar2 = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        int number2 = 100;
+        int[] newAr2 = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91, 100};
+        assertArrayEquals(newAr2, insertSorted(ar2,number2));
+        int[] ar3 = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        int number3 = -20;
+        int[] newAr3 = {-20, 2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        assertArrayEquals(newAr3, insertSorted(ar3,number3));
+    }
+
 private int[] getRandomArray(int nElements) {
     int[] res = new int[nElements];
     Random random = new Random();
