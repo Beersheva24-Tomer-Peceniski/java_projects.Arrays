@@ -58,6 +58,7 @@ private static void swap(int[] ar, int i, int j) {
     ar[i] = ar[j];
     ar[j] = tmp;
 }
+
 public static void sort(int [] ar) {
     int length = ar.length ;
     boolean flSorted = false;
@@ -74,13 +75,20 @@ public static void sort(int [] ar) {
  * @return see comments definition
  */
 public static int binarySearch(int [] ar, int key) {
-    //TODO
-    //index of the search key, if it is contained in the array;
-    // otherwise, (-(insertion point) - 1).
-    // The insertion point is defined as the point at which the key would be inserted into 
-    //the array: the index of the first element greater than the key, or a.length if all elements in the array are less than the specified key. Note that this guarantees that the return value will be >= 0 if and only if the key is found.
+    int max = ar.length - 1;
+    int min = 0;
+    while(min <= max) {
+        int half = (max + min) / 2;
+        if(key > ar[half]) {
+            min = half + 1;
+        } else if(key < ar[half]) {
+                max = half - 1;
+        } else{
+            return half;
+    }
+    }
     return -1;
-}
+}    
 
 public static int[] insertSorted(int[] arSorted, int number) {
     //TODO

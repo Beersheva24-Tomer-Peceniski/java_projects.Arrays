@@ -64,6 +64,17 @@ void sortTestRandomArray() {
         assertTrue(array[i] <= array[i + 1]);
     }
 }
+
+    @Test 
+    void binarySearchTest() {
+        int[] arrayTest = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+        assertEquals(5, binarySearch(arrayTest, 23));
+        // int [] arrayRandom = {-1, -7, -8, 10, 1, 2, 3, 90, 25, -2};
+        int[] arrayTest2 = {-8, -7, -2, -1, 1, 2, 3, 10, 25, 90};
+        assertEquals(1, binarySearch(arrayTest2, -7));
+        assertEquals(-1, binarySearch(arrayTest2, 100));
+    }
+
 private int[] getRandomArray(int nElements) {
     int[] res = new int[nElements];
     Random random = new Random();
