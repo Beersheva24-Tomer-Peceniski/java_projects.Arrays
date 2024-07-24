@@ -233,10 +233,32 @@ public class Arrays {
     * @param mustNotBeRule array of rules that must be false
     * @return empty error message if array of chars matches all rules otherwise specific error message saying what rules don't match
     */
-    public static String matchesRules(char[] chars,
-     CharacterRule[] mustBeRules, CharacterRule[] mustNotBeRule) {
-        //TODO
-        //consider the class Character for rules definition
-        return "";
+    public static String matchesRules(char[] chars, CharacterRule[] mustBeRules, CharacterRule[] mustNotBeRule) {
+        String message = "";
+
+        for (CharacterRule rule : mustNotBeRule) {
+            for (char item : chars) {
+                if (rule.predicate.test(item)) {
+                    message = rule.errorMessage;
+                    break;
+                }    
+            }
+        }
+        
+        if (message == "") {
+            for (CharacterRule rule : mustBeRules) {
+                int count = 0;
+                for (char item : chars) {
+                    if (rule.predicate.test(item)) {
+                        count += 1;
+                    }
+                }
+                if(count == 0) {
+                    message = rule.errorMessage;
+                    break;
+                }
+            }            
+        }
+        return message;
      }
 }

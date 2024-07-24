@@ -2,6 +2,8 @@ package telran.util.test;
 
 import org.junit.jupiter.api.Test;
 
+import telran.util.CharacterRule;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static telran.util.Arrays.*;
 
@@ -184,13 +186,24 @@ void evenOddSorting() {
     }
 @Test
 void matchesRulesTest() {
-    //TODO
-    //Must be rules: at least one capital letter, at least one lower case letter, at least one digit, at least one dot(.)
-    //Must not be rules: space is disallowed
-    //examples: mathes - {'a', 'n', '*', 'G', '.', '.', '1'}
-    //mismatches - {'a', 'n', '*', 'G', '.', '.', '1', ' '} -> "space disallowed",
-    // {'a', 'n', '*',  '.', '.', '1'} -> "no capital",
-    // {'a', 'n', '*', 'G', '.', '.'} -> "no digit"
-
+    CharacterRule upperCaseTrue = new CharacterRule(true, Character::isUpperCase, "Must be an uppercase in your array");
+    CharacterRule digitTrue = new CharacterRule(true, Character::isDigit, "Must be a digit in your array");
+    CharacterRule spaceFalse = new CharacterRule(false, Character::isSpaceChar, "There is a space in your array");
+    char[] array1 = {'A', 'a', 'b', '1', ' '};
+    CharacterRule[] actives1 = {digitTrue};
+    CharacterRule[] unactives1 = {spaceFalse};
+    assertEquals("There is a space in your array", matchesRules(array1, actives1, unactives1));
+    char[] array2 = {'a', 'b', 'c', 'd', 'e'};
+    CharacterRule[] actives2 = {upperCaseTrue};
+    CharacterRule[] unactives2 = {spaceFalse};
+    assertEquals("Must be an uppercase in your array", matchesRules(array2, actives2, unactives2));
+    char[] array3 = {'A', 'b', 'c', 'd', 'e'};
+    CharacterRule[] actives3 = {upperCaseTrue, digitTrue};
+    CharacterRule[] unactives3 = {spaceFalse};
+    assertEquals("Must be a digit in your array", matchesRules(array3, actives3, unactives3));
+    char[] array4 = {' ', 'A', 'b', 'c', 'd', 'e'};
+    CharacterRule[] actives4 = {upperCaseTrue, digitTrue};
+    CharacterRule[] unactives4 = {spaceFalse};
+    assertEquals("There is a space in your array", matchesRules(array4, actives4, unactives4));
 }
 }
