@@ -202,10 +202,10 @@ public class Arrays {
         return left > right ? -(left + 1) : middle;
        
     }
+    @SuppressWarnings("unchecked")
     public static <T> int binarySearch(T[] array, T key) {
-        //TODO
-        //The code should be base on binarySearch 
-        return -1;
+        //The code should be based on binarySearch with comparator
+        return binarySearch(array, key, (Comparator<T>)Comparator.naturalOrder());
     }
     public static <T> T[] insert(T [] array, int index, T item) {
         T[] res = java.util.Arrays.copyOf(array, array.length + 1);
@@ -223,8 +223,20 @@ public class Arrays {
         return result;
     }
     public static <T> T[] removeIf (T[] array, Predicate<T> predicate){
-        //TODO
-        //using oneline
-        return null;
+        
+        return find(array, predicate.negate());
     }
+   /**
+    * 
+    * @param chars - array of char primitives
+    * @param mustBeRules - array of rules that must be true
+    * @param mustNotBeRule array of rules that must be false
+    * @return empty error message if array of chars matches all rules otherwise specific error message saying what rules don't match
+    */
+    public static String matchesRules(char[] chars,
+     CharacterRule[] mustBeRules, CharacterRule[] mustNotBeRule) {
+        //TODO
+        //consider the class Character for rules definition
+        return "";
+     }
 }
